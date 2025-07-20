@@ -40,6 +40,36 @@
             transition: all 0.4s ease-in-out;
         }
 
+        /* Pop up animation for form fields */
+        @keyframes popUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .pop-up-field {
+            animation: popUp 0.7s cubic-bezier(.23,1.02,.47,.98) forwards;
+        }
+        /* Stagger effect for multiple fields */
+        .pop-up-field:nth-child(1) { animation-delay: 0.05s; }
+        .pop-up-field:nth-child(2) { animation-delay: 0.12s; }
+        .pop-up-field:nth-child(3) { animation-delay: 0.19s; }
+        .pop-up-field:nth-child(4) { animation-delay: 0.26s; }
+        .pop-up-field:nth-child(5) { animation-delay: 0.33s; }
+        .pop-up-field:nth-child(6) { animation-delay: 0.40s; }
+        .pop-up-field:nth-child(7) { animation-delay: 0.47s; }
+        .pop-up-field:nth-child(8) { animation-delay: 0.54s; }
+        .pop-up-field:nth-child(9) { animation-delay: 0.61s; }
+        .pop-up-field:nth-child(10) { animation-delay: 0.68s; }
+
         /* Dark mode styles */
         .dark body {
             background-color: #181818;
@@ -255,7 +285,7 @@
                             <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
                                 <div class="h-10 w-10 bg-yellow-100 dark:bg-yellow-900 rounded-lg flex items-center justify-center mb-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                                     </svg>
                                 </div>
                                 <h4 class="font-bold text-secondary dark:text-white">Sports Facilities</h4>
@@ -741,6 +771,10 @@
                 if (e.target === successModal) {
                     successModal.classList.add('hidden');
                 }
+            });
+
+            document.querySelectorAll('input, select, textarea').forEach((el, i) => {
+                el.classList.add('pop-up-field');
             });
         });
     </script>
